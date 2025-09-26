@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@use "bootstrap";
+
+body {
+    height: 100vh;
+}
+
+.teste {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    background-color: rgb(169, 224, 217);
+    border-radius: 12px;
+    text-align: center;
+    padding: 35px;
+    margin-top: 15px;
+}
