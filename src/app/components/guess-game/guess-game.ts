@@ -39,10 +39,10 @@ export class GuessGame implements OnInit {
 
     if (this.numberInput < this.secretNumber) {
       this.actualAttempt++;
-      this.tipIsHigherThan = this.numberInput;
+      if (this.numberInput > this.tipIsHigherThan) this.tipIsHigherThan = this.numberInput;
     } else if (this.numberInput > this.secretNumber) {
       this.actualAttempt++;
-      this.tipIsLowerThan = this.numberInput;
+      if (this.numberInput < this.tipIsLowerThan) this.tipIsLowerThan = this.numberInput;
     } else {
       this.playerWon = true;
       this.saveCurrentScore();
@@ -101,6 +101,7 @@ export class GuessGame implements OnInit {
     const newScoreEntry: ScoreEntry = {
       score: this.score,
       timestamp: new Date().toLocaleString(),
+      difficulty: this.difficultyChosen as string,
     };
     this.scores.push(newScoreEntry);
     localStorage.setItem('scoreboard', JSON.stringify(this.scores));

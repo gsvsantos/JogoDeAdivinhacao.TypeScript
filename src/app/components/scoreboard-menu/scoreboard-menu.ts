@@ -25,7 +25,7 @@ export class ScoreboardMenu implements OnInit {
 
     if (scoreboardString) {
       this.scoreboard = JSON.parse(scoreboardString) as ScoreEntry[];
-      this.scoreboard.sort((a, b) => b.score - a.score);
+      this.scoreboard.sort((entry1, entry2) => entry1.score - entry2.score);
     } else {
       this.scoreboard = [];
     }

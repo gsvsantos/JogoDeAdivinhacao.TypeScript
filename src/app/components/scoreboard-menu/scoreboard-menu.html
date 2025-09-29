@@ -8,6 +8,7 @@
     } @for (entry of scoreboard; track $index){
     <li class="scoreboard-item">
       <span class="score-value">{{ entry.score }} pontos</span>
+      <span class="difficulty">Difficulty: {{ entry.difficulty }}</span>
       <span class="timestamp">{{ entry.timestamp }}</span>
     </li>
     }

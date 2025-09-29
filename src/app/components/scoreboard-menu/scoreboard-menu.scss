@@ -33,7 +33,12 @@ h1 {
   border-bottom: 1px solid var(--cor-borda);
   padding: 0.75rem 0.25rem;
 }
+
 .scoreboard-item .score-value {
+  font-weight: 700;
+}
+
+.scoreboard-item .difficulty {
   font-weight: 700;
 }
 
