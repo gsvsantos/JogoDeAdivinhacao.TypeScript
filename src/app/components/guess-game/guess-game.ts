@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { NgClass } from "@angular/common";
 
 @Component({
-  selector: 'app-dice-game',
-  imports: [FormsModule, RouterLink, NgClass],
-  templateUrl: './dice-game.html',
-  styleUrl: './dice-game.scss',
+  selector: 'app-guess-game',
+  imports: [FormsModule, RouterLink],
+  templateUrl: './guess-game.html',
+  styleUrl: './guess-game.scss',
 })
-export class DiceGame implements OnInit {
+export class GuessGame implements OnInit {
   public difficultyChosen: string | null = localStorage.getItem('difficultyChosen');
 
   public numberInput: number = 1;
@@ -57,7 +56,7 @@ export class DiceGame implements OnInit {
     this.score = 100;
     this.defineDifficultyValues(this.difficultyChosen);
   }
-  
+
   private defineDifficultyValues(difficultyChosen: string | null): void {
     switch (difficultyChosen) {
       case 'easy':
