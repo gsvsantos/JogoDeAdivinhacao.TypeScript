@@ -19,6 +19,7 @@ export class DiceGame implements OnInit {
   public playerWon: boolean = false;
   public tipIsLowerThan: number = 100;
   public tipIsHigherThan: number = 1;
+  public score: number = 100;
 
   public ngOnInit(): void {
     this.defineDifficultyValues(this.difficultyChosen);
@@ -37,6 +38,12 @@ export class DiceGame implements OnInit {
       this.actualAttempt++;
       this.tipIsLowerThan = this.numberInput;
     } else this.playerWon = true;
+
+    const wrongNumberDiff: number = Math.abs(this.secretNumber - this.numberInput);
+
+    if (wrongNumberDiff >= 10) this.score -= 10;
+    else if (wrongNumberDiff >= 5) this.score -= 5;
+    else this.score -= 2;
   }
 
   public restart(): void {
@@ -46,6 +53,7 @@ export class DiceGame implements OnInit {
     this.actualAttempt = 1;
     this.gameIsOver = false;
     this.playerWon = false;
+    this.score = 100;
     this.defineDifficultyValues(this.difficultyChosen);
   }
 

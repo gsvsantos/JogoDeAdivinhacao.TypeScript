@@ -1,9 +1,5 @@
 <button class="btn btn-danger" [routerLink]="['/main-menu']">Surrender</button>
 <div class="game-container">
-  <span>Difficulty: {{ difficultyChosen }}</span>
-  <span>Max Attempts: {{ maxAttempts }}</span>
-  <span>Actual Attempt: {{ actualAttempt }}</span>
-  <span>secret: {{ secretNumber }}</span>
   @if (playerWon){
   <span>YOU WIN, CONGRATS!</span>
   } @if (gameIsOver){
@@ -14,13 +10,21 @@
     <label class="tip-higherThan">{{ tipIsHigherThan }}></label>
     <div class="game-center">
       <input class="number-input" type="number" min="1" max="100" [(ngModel)]="numberInput" />
-      <button [hidden]="gameIsOver || playerWon" (click)="restart()" class="btn btn-restart">
-        Restart
-      </button>
-      <button [hidden]="!gameIsOver || !playerWon" (click)="guess()" class="btn btn-primary">
-        Guess
-      </button>
+      <div class="action-btns">
+        <button [hidden]="!gameIsOver || !playerWon" (click)="guess()" class="btn btn-primary">
+          Guess
+        </button>
+        <button [hidden]="gameIsOver || playerWon" (click)="restart()" class="btn btn-restart">
+          Restart
+        </button>
+      </div>
     </div>
     <label class="tip-lowerThan"><{{ tipIsLowerThan }}</label>
   </main>
+  
+  <span>Difficulty: {{ difficultyChosen }}</span>
+  <span>Max Attempts: {{ maxAttempts }}</span>
+  <span>Actual Attempt: {{ actualAttempt }}</span>
+  <span>score: {{ score }}</span>
+  <span>secret: {{ secretNumber }}</span>
 </div>
