@@ -13,29 +13,42 @@ export class DiceGame implements OnInit {
 
   public numberInput: number = 1;
   public secretNumber: number = 0;
-  public maxAttemps: number = 10;
+  public actualAttempt: number = 1;
+  public maxAttempts: number = 10;
   public gameIsOver: boolean = false;
+  public playerWon: boolean = false;
   public tipIsLowerThan: number = 100;
   public tipIsHigherThan: number = 1;
   private minNumber: number = 1;
   private maxNumber: number = 100;
 
   public ngOnInit(): void {
-    this.defineMaxAttemps(this.difficultyChosen);
+    this.defineMaxAttempts(this.difficultyChosen);
     this.secretNumber = this.numberRandomizer(this.minNumber, this.maxNumber);
   }
 
   public guess(): void {
-    if (this.numberInput < this.secretNumber) this.tipIsHigherThan = this.numberInput;
-    else if (this.numberInput > this.secretNumber) this.tipIsLowerThan = this.numberInput;
-    else this.gameIsOver = true;
+    if (this.actualAttempt == this.maxAttempts) {
+      this.gameIsOver = true;
+      return;
+    }
+
+    if (this.numberInput < this.secretNumber) {
+      this.actualAttempt++;
+      this.tipIsHigherThan = this.numberInput;
+    } else if (this.numberInput > this.secretNumber) {
+      this.actualAttempt++;
+      this.tipIsLowerThan = this.numberInput;
+    } else this.playerWon = true;
   }
 
   public restart(): void {
     this.numberInput = 1;
     this.tipIsHigherThan = 1;
     this.tipIsLowerThan = 100;
+    this.actualAttempt = 1;
     this.gameIsOver = false;
+    this.playerWon = false;
     this.secretNumber = this.numberRandomizer(this.minNumber, this.maxNumber);
   }
 
@@ -46,11 +59,11 @@ export class DiceGame implements OnInit {
     return Math.floor(Math.random() * (maxNumberCeiled - minNumberCeiled + 1) + minNumberCeiled);
   }
 
-  private defineMaxAttemps(difficultyChosen: string | null): void {
+  private defineMaxAttempts(difficultyChosen: string | null): void {
     if (difficultyChosen === null) return;
 
-    if (difficultyChosen == 'easy') this.maxAttemps = 10;
-    else if (difficultyChosen == 'normal') this.maxAttemps = 5;
-    else if (difficultyChosen == 'hard') this.maxAttemps = 3;
+    if (difficultyChosen == 'easy') this.maxAttempts = 10;
+    else if (difficultyChosen == 'normal') this.maxAttempts = 5;
+    else if (difficultyChosen == 'hard') this.maxAttempts = 3;
   }
 }
