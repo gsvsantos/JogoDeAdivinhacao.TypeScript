@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { NgClass } from "@angular/common";
 
 @Component({
   selector: 'app-dice-game',
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, NgClass],
   templateUrl: './dice-game.html',
   styleUrl: './dice-game.scss',
 })
@@ -13,7 +14,7 @@ export class DiceGame implements OnInit {
 
   public numberInput: number = 1;
   public secretNumber: number = 0;
-  public actualAttempt: number = 1;
+  public actualAttempt: number = 0;
   public maxAttempts: number = 10;
   public gameIsOver: boolean = false;
   public playerWon: boolean = false;
@@ -50,13 +51,13 @@ export class DiceGame implements OnInit {
     this.numberInput = 1;
     this.tipIsHigherThan = 1;
     this.tipIsLowerThan = 100;
-    this.actualAttempt = 1;
+    this.actualAttempt = 0;
     this.gameIsOver = false;
     this.playerWon = false;
     this.score = 100;
     this.defineDifficultyValues(this.difficultyChosen);
   }
-
+  
   private defineDifficultyValues(difficultyChosen: string | null): void {
     switch (difficultyChosen) {
       case 'easy':

@@ -60,7 +60,6 @@ body {
 .btn-primary {
   background-color: var(--cor-primaria);
   border-color: var(--cor-primaria);
-  color: var(--cor-texto-invertido);
 }
 
 .btn-primary:hover {
@@ -77,6 +76,10 @@ body {
 .btn:active {
   background-color: var(--cor-secundaria-active);
   box-shadow: 0 0 6px var(--cor-secundaria-active);
+}
+
+.hiddear {
+    display: none !important;
 }
 
 .btn-outline {
