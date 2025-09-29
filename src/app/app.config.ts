@@ -8,12 +8,14 @@ import { provideRouter, Routes } from '@angular/router';
 import { DifficultyMenu } from './components/difficulty-menu/difficulty-menu';
 import { GuessGame } from './components/guess-game/guess-game';
 import { MainMenu } from './components/main-menu/main-menu';
+import { ScoreboardMenu } from './components/scoreboard-menu/scoreboard-menu';
 
 const routes: Routes = [
   { path: '', redirectTo: 'main-menu', pathMatch: 'full' },
   { path: 'main-menu', component: MainMenu },
   { path: 'difficulties', component: DifficultyMenu },
   { path: 'guess-game', component: GuessGame },
+  { path: 'scoreboard', component: ScoreboardMenu },
 ];
 
 // Configura Injeção de Dependências da Aplicação
