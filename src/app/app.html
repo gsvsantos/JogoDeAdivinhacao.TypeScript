@@ -1,21 +1,7 @@
-<div class="teste">
-  <h1>Dice Game</h1>
-  <main class="main row-cols-3">
-    <label class="display-1">{{ tipIsHigherThan }}></label>
-    <div class="d-flex flex-column gap-2">
-      <input
-        class="display-1 text-center"
-        type="number"
-        min="1"
-        max="100"
-        [(ngModel)]="numberInput"
-      />
-      @if (!gameIsOver){
-      <button (click)="guess()" clas="btn btn-primary">Guess</button>
-      } @else {
-      <button (click)="restart()" class="btn btn-danger">Restart</button>
-      }
-    </div>
-    <label class="display-1"><{{ tipIsLessThan }}</label>
-  </main>
-</div>
+<main class="main">
+  <h1>Dice Game v0.0.1</h1>
+  <hr />
+  <div class="app">
+    <router-outlet></router-outlet>
+  </div>
+</main>

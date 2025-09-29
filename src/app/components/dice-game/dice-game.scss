@@ -1,0 +1,19 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.main-layout {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  background-color: rgb(179, 96, 235);
+  border-radius: 12px;
+  text-align: center;
+  padding: 35px;
+  margin-top: 15px;
+}

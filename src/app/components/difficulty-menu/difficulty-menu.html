@@ -1,0 +1,17 @@
+<button class="btn btn-primary" [routerLink]="['/main-menu']">Back</button>
+
+<div class="difficulties-container">
+  <label for="difficulty">Select Difficulty:</label>
+  <div class="easy">
+    <input type="radio" id="easy" name="difficulty" value="easy" [(ngModel)]="difficultyChosen"/>
+    <span>Easy</span>
+  </div>
+  <div class="normal">
+    <input type="radio" id="normal" name="difficulty" value="normal" [(ngModel)]="difficultyChosen"/><span>Normal</span>
+  </div>
+  <div class="hard">
+    <input type="radio" id="hard" name="difficulty" value="hard" [(ngModel)]="difficultyChosen"/><span>Hard</span>
+  </div>
+</div>
+
+<button class="btn btn-primary" (click)="confirm()" [routerLink]="['/main-menu']">confirm</button>
