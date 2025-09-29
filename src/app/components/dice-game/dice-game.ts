@@ -19,12 +19,9 @@ export class DiceGame implements OnInit {
   public playerWon: boolean = false;
   public tipIsLowerThan: number = 100;
   public tipIsHigherThan: number = 1;
-  private minNumber: number = 1;
-  private maxNumber: number = 100;
 
   public ngOnInit(): void {
-    this.defineMaxAttempts(this.difficultyChosen);
-    this.secretNumber = this.numberRandomizer(this.minNumber, this.maxNumber);
+    this.defineDifficultyValues(this.difficultyChosen);
   }
 
   public guess(): void {
@@ -49,7 +46,26 @@ export class DiceGame implements OnInit {
     this.actualAttempt = 1;
     this.gameIsOver = false;
     this.playerWon = false;
-    this.secretNumber = this.numberRandomizer(this.minNumber, this.maxNumber);
+    this.defineDifficultyValues(this.difficultyChosen);
+  }
+
+  private defineDifficultyValues(difficultyChosen: string | null): void {
+    switch (difficultyChosen) {
+      case 'easy':
+        this.secretNumber = this.numberRandomizer(1, 10);
+        this.maxAttempts = 10;
+        break;
+      case 'normal':
+        this.secretNumber = this.numberRandomizer(1, 50);
+        this.maxAttempts = 5;
+        break;
+      case 'hard':
+        this.secretNumber = this.numberRandomizer(1, 100);
+        this.maxAttempts = 3;
+        break;
+      case null:
+        return;
+    }
   }
 
   private numberRandomizer(min: number, max: number): number {
@@ -57,13 +73,5 @@ export class DiceGame implements OnInit {
     const maxNumberCeiled = Math.floor(max);
 
     return Math.floor(Math.random() * (maxNumberCeiled - minNumberCeiled + 1) + minNumberCeiled);
-  }
-
-  private defineMaxAttempts(difficultyChosen: string | null): void {
-    if (difficultyChosen === null) return;
-
-    if (difficultyChosen == 'easy') this.maxAttempts = 10;
-    else if (difficultyChosen == 'normal') this.maxAttempts = 5;
-    else if (difficultyChosen == 'hard') this.maxAttempts = 3;
   }
 }
